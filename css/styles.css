@@ -6,6 +6,16 @@ body{
     background-color: #04A6EB;
 }
 
+#logo {
+    width: 250px;
+}
+
+.navbar-toggler{
+    color: #FF6020;
+    border-color: #FF6020;
+    font-size: 2rem;
+}
+
 .btn{
     background-color: #FF6020;
     color: #FFF;
