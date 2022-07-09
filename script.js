@@ -2,18 +2,20 @@ import { createCards } from "./modules/cards.js";
 
 $(() => {
 
-    $(".form-buscar").on("submit", function (event) {
+    $(".form-buscar").on("submit", async function (event) {
         event.preventDefault();
 
-        const busqueda = $("#busqueda").val();
+        const search = $("#busqueda").val();
+        const sort = $("#orden").val();
+        
+        const url = `http://localhost:3000/api/v1/product/${search}?sort=${sort}`;
 
-        $.ajax({
-            url: `http://localhost:3000/api/v1/product/${busqueda}`,
-            success: function (products) {
-                let cards = createCards(products);
+        let products = await $.ajax({
+            url
+        }); 
 
-                $(".resultados").html(cards);
-            }
-        });
+        let cards = createCards(products);
+
+        $(".resultados").html(cards);
     })
 })

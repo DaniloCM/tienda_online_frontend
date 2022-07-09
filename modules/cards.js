@@ -1,15 +1,15 @@
-export const createCards = (products) => {
+export const createCards = ( products ) => {
     
     console.log(products);
 
-    let cards =products.map((product) => {
+    let cards = products.map(( product ) => {
         
-        let {name, price, discount, url_image} = product;
+        let { name, price, discount, url_image } = product;
 
         return `
             <div class="col p-2">
-                <div class="card">
-                    <img src="${ url_image }" class="card-img-top" alt="Imagen de ${ name }">
+                <div class="card ">
+                   ${img(url_image, name)}
                     <div class="card-body">
                         <h5 class="card-title">${ name }</h5>
                         <p class="card-text">
@@ -26,5 +26,20 @@ export const createCards = (products) => {
     });
 
     return cards.join("");
+}
+
+const img = (url, name) => {
+
+    if (!url) url = "../imgs/not_available.png"
+
+    let imgTag = `
+        <img src="${ url }" class="card-img-top" alt="Imagen de ${ name }">
+    `
+    return imgTag;
+}
+
+const priceAndDiscount = (price, discount) => {
+
+
 
 }
