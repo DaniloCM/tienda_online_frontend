@@ -7,19 +7,18 @@ export const createCards = ( products ) => {
         let { name, price, discount, url_image } = product;
 
         return `
-            <div class="col p-2">
+            <div class="col p-2 d-flex justify-content-center">
                 <div class="card ">
-                   ${img(url_image, name)}
+                   ${ img(url_image, name) }
                     <div class="card-body">
-                        <h5 class="card-title">${ name }</h5>
-                        <p class="card-text">
-                            Precio: $${ price }
-                            Descuento: ${ discount }%
+                        <h5 class="card-title d-block mb-3">${ name }</h5>
+                        <p class="card-text d-block">
+                            ${ priceAndDiscount( price, discount )}
                         </p>
-                        <a href="#" class="btn">
-                            <i class="fa-solid fa-cart-shopping"></i>
-                        </a>
                     </div>
+                    <a href="#" class="btn">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                    </a>
                 </div>
             </div>
         `;
@@ -40,6 +39,21 @@ const img = (url, name) => {
 
 const priceAndDiscount = (price, discount) => {
 
+    let discountString = "";
+    let priceString = `Precio: ${price}`
+    
+    if (discount > 0){
+        
+        let priceWithDiscount = price * (1 - discount / 100);
+        
+        discountString = `Descuento: <span class="discount">${discount}%</span>`;
+        priceString = `Precio: <span class="oldPrice">$${price}</span> <span class="newPrice">$${priceWithDiscount}</span>`
+    }
 
+
+    return `
+        ${priceString}<br>
+        ${discountString}
+    `
 
 }

@@ -25,3 +25,13 @@ body{
     background-color: #FFF;
     color: #FF6020;
 }
+
+.oldPrice {
+    text-decoration: line-through;
+    opacity: 0.5;
+}
+
+.newPrice, .discount {
+    color: #ff4d4d;
+    font-size: 1.25em;
+}
