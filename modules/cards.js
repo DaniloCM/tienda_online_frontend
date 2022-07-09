@@ -9,11 +9,11 @@ export const createCards = ( products ) => {
         return `
             <div class="col p-2 d-flex justify-content-center">
                 <div class="card ">
-                   ${ img(url_image, name) }
+                   ${ img( url_image, name ) }
                     <div class="card-body">
                         <h5 class="card-title d-block mb-3">${ name }</h5>
                         <p class="card-text d-block">
-                            ${ priceAndDiscount( price, discount )}
+                            ${ priceAndDiscount( price, discount ) }
                         </p>
                     </div>
                     <a href="#" class="btn">
@@ -40,7 +40,7 @@ const img = (url, name) => {
 const priceAndDiscount = (price, discount) => {
 
     let discountString = "";
-    let priceString = `Precio: ${price}`
+    let priceString = `Precio: $${price}`
     
     if (discount > 0){
         
