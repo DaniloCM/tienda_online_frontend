@@ -1,4 +1,4 @@
-export const createCards = ( products ) => {
+export const cardsHTML = ( products ) => {
 
     let cards = products.map(( product ) => {
         
@@ -14,9 +14,9 @@ export const createCards = ( products ) => {
                             ${ priceAndDiscount( price, discount ) }
                         </p>
                     </div>
-                    <a href="#" class="btn">
+                    <buttom class="btn">
                         <i class="fa-solid fa-cart-shopping"></i>
-                    </a>
+                    </buttom>
                 </div>
             </div>
         `;

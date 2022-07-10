@@ -1,4 +1,4 @@
-import { createCards as cardsHTML } from "./modules/cards.js";
+import { cardsHTML } from "./modules/cards.js";
 import { getCategories, createCategoryFilter } from "./modules/categories.js";
 import { getProducts } from "./modules/products.js";
 
