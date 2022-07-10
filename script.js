@@ -84,6 +84,4 @@ const productsForCategoriesAndPriceRange = async () => {
     $("#rango-mayor-5000 .quantity").html(`
         (${quantityOfProductsForRangePrice[2]})
     `);
-
-    console.log(quantityOfProductsForRangePrice);
 }

@@ -27,13 +27,9 @@ export const getCategories = async () => {
 
     let url = `https://api-tiendabsale.herokuapp.com/api/v1/category`;
     
-    console.log(url);
-    
     let categories = await $.ajax({
         url
     });
-
-    console.log(categories);
 
     return categories;
 

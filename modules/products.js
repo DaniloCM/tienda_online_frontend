@@ -7,8 +7,6 @@ export const getProducts = async (search, sort) => {
 
     url += getCategoryQuery();
     
-    console.log(url);
-    
     let products = await $.ajax({
         url
     });
@@ -47,7 +45,6 @@ const checkedPriceRange = () => {
 const getCategoryQuery = () => {
 
     let checkedCheckbox = checkedCategories();
-    console.log({checkedCheckbox});
         
     const categoryQuery = checkedCheckbox.length > 0 ? `&categories=${checkedCheckbox.join()}` : "";
 
@@ -66,8 +63,6 @@ const checkedCategories = () => {
             areChecked.push(categoryId)
         }
     });
-
-    console.log({areChecked});
 
     return areChecked;
 
