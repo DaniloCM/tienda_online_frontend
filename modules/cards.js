@@ -22,7 +22,7 @@ export const cardsHTML = ( products ) => {
         `;
     });
 
-    if(cards.join("") === "") return "Sin resultado"
+    if(cards.join("") === "") return "<div>Sin resultados</div>";
 
     return cards.join("");
 }
