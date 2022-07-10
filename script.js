@@ -1,7 +1,10 @@
 import { createCards } from "./modules/cards.js";
+import { getCategories, createCategoryFilter } from "./modules/categories.js";
 import { getProducts } from "./modules/products.js";
 
-$(() => {
+$(async () => {
+
+    $(".categorias").html(await createCategoryFilter());
 
     $(".form-buscar").on("submit", async function (event) {
         event.preventDefault();
@@ -42,5 +45,6 @@ $(() => {
         $(".resultados").html(cards);
 
     })
+
 })
 
