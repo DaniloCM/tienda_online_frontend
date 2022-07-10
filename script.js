@@ -6,6 +6,7 @@ $(async () => {
 
     $(".categorias").html(await createCategoryFilter());
 
+
     $(".form-buscar").on("submit", async function (event) {
         event.preventDefault();
 
@@ -34,6 +35,19 @@ $(async () => {
     })
 
     $("#orden").on("change", async function (){
+        
+        const search = $("#busqueda").val();
+        const sort = $("#orden").val();
+
+        let products = await getProducts(search, sort);
+
+        let cards = createCards(products);
+
+        $(".resultados").html(cards);
+
+    })
+
+    $(".categorias input").on("change", async function (){
         
         const search = $("#busqueda").val();
         const sort = $("#orden").val();

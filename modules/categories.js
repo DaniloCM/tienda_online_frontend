@@ -18,8 +18,6 @@ export const createCategoryFilter = async () => {
 
     });
 
-    console.log(categoriesHTML);
-
     return categoriesHTML;
 
 };

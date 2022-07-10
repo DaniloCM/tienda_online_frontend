@@ -4,6 +4,8 @@ export const getProducts = async (search, sort) => {
     let url = `http://localhost:3000/api/v1/product/${search}?sort=${sort}`;
     
     url += getPriceRangeQuery();
+
+    url += getCategoryQuery();
     
     console.log(url);
     
@@ -37,6 +39,35 @@ const checkedPriceRange = () => {
         let isChecked = checkbox.is(':checked');
         areChecked[index] = isChecked;
     })
+
+    return areChecked;
+
+};
+
+const getCategoryQuery = () => {
+
+    let checkedCheckbox = checkedCategories();
+    console.log({checkedCheckbox});
+        
+    const categoryQuery = checkedCheckbox.length > 0 ? `&categories=${checkedCheckbox.join()}` : "";
+
+    return categoryQuery;
+
+}
+
+const checkedCategories = () => {
+
+    let areChecked = [];
+
+    $(".categorias input").each(function (index) {
+        let isChecked = $( this ).is( ':checked' );
+        if ( isChecked ) {
+            let categoryId = $(this).val();
+            areChecked.push(categoryId)
+        }
+    });
+
+    console.log({areChecked});
 
     return areChecked;
 
