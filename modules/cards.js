@@ -9,8 +9,8 @@ export const cardsHTML = ( products ) => {
                 <div class="card ">
                    ${ img( url_image, name ) }
                     <div class="card-body">
-                        <h5 class="card-title d-block mb-3">${ name }</h5>
-                        <p class="card-text d-block">
+                        <h5 class="card-title mb-3">${ name }</h5>
+                        <p class="card-text">
                             ${ priceAndDiscount( price, discount ) }
                         </p>
                     </div>
