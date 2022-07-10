@@ -85,19 +85,19 @@ Los eventos que se están escuchando son el submit de la barra de búsqueda, el 
 
 #### Funciones
 
-`createCards()` Crea las cartas de los productos y los inserta en la sección resultados.
+`createCards(): void` Crea las cartas de los productos y los inserta en la sección resultados.
 
-`productsForCategoriesAndPriceRange()` Agrega al lado del nombre del filtro el número de productos que coincide con cada uno, respecto a la búsqueda realizada.
+`productsForCategoriesAndPriceRange(): void` Agrega al lado del nombre del filtro el número de productos que coincide con cada uno, respecto a la búsqueda realizada.
 
 ### cards.js
 
 Este módulo corresponde a la creación de código HTML de las cartas. Hay tres funciones que son:
 
-`cardsHTML(products: array)` Crea el código de las tarjetas con la información obtenida de la consulta a la API, que corresponde al parámetro products.
+`cardsHTML(products: array): string` Crea el código de las tarjetas con la información obtenida de la consulta a la API, que corresponde al parámetro products.
 
-`img(url: string, name: string)` Genera el tag img con la url de la imagen del producto (url) y con el nombre del producto (name) agrega un alt describiendo la imagen.
+`img(url: string, name: string): string` Genera el tag img con la url de la imagen del producto (url) y con el nombre del producto (name) agrega un alt describiendo la imagen.
 
-`priceAndDiscount(price: number, discount: number)` Crea el párrafo con el precio y si hay descuento, se agrega el precio con descuento y el porcentaje de descuento.
+`priceAndDiscount(price: number, discount: number): string` Crea el párrafo con el precio y si hay descuento, se agrega el precio con descuento y el porcentaje de descuento.
 
 ### categories.js
 
