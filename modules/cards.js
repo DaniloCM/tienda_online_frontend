@@ -22,6 +22,8 @@ export const cardsHTML = ( products ) => {
         `;
     });
 
+    if(cards.join("") === "") return "Sin resultado"
+
     return cards.join("");
 }
 
