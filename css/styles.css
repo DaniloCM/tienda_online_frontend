@@ -39,3 +39,7 @@ body{
 .quantity {
     opacity: 0.75;
 }
+
+.card{
+    width: 100%;
+}

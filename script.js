@@ -6,6 +6,7 @@ $(async () => {
 
     $(".categorias").html(await createCategoryFilter());
     createCards();
+    productsForCategoriesAndPriceRange();
 
 
     $(".form-buscar").on("submit", async function (event) {
@@ -86,5 +87,3 @@ const productsForCategoriesAndPriceRange = async () => {
 
     console.log(quantityOfProductsForRangePrice);
 }
-
-productsForCategoriesAndPriceRange();
