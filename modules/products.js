@@ -1,7 +1,7 @@
 
 export const getProducts = async (search, sort) => {
     
-    let url = `http://localhost:3000/api/v1/product/${search}?sort=${sort}`;
+    let url = `https://api-tiendabsale.herokuapp.com/api/v1/product/${search}?sort=${sort}`;
     
     url += getPriceRangeQuery();
 

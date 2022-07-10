@@ -25,7 +25,7 @@ export const createCategoryFilter = async () => {
 
 export const getCategories = async () => {
 
-    let url = `http://localhost:3000/api/v1/category`;
+    let url = `https://api-tiendabsale.herokuapp.com/api/v1/category`;
     
     console.log(url);
     
