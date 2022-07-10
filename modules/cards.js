@@ -27,7 +27,7 @@ export const cardsHTML = ( products ) => {
 
 const img = (url, name) => {
 
-    if (!url) url = "../imgs/not_available.png"
+    if (!url) url = "./imgs/not_available.png"
 
     let imgTag = `
         <img src="${ url }" class="card-img-top" alt="Imagen de ${ name }">
