@@ -8,11 +8,12 @@ export const createCategoryFilter = async () => {
         let { name, id } = category;
 
         categoriesHTML += `
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="${id}" id="category-${name}">
-                <label class="form-check-label" for="category-${name}">
+            <div class="form-check" id="category-${name.replace(/ /g, "-")}">
+                <input class="form-check-input" type="checkbox" value="${id}" id="${name.replace(/ /g, "-")}">
+                <label class="form-check-label" for="${name.replace(/ /g, "-")}">
                     ${name}
                 </label>
+                <span class="quantity"></span>
             </div>
         `
 
