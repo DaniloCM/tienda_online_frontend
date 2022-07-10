@@ -1,6 +1,4 @@
 export const createCards = ( products ) => {
-    
-    console.log(products);
 
     let cards = products.map(( product ) => {
         
