@@ -2,7 +2,7 @@
 
 La prueba consiste en realizar una tienda online que despliegue los productos agrupados por categorías que pertenecen.
 
-Este repositorio corresponde a la parte frondend del proyecto.
+Este repositorio corresponde a la parte frontend del proyecto.
 
 El proyecto frontend tiene deploy en github-pages:
 https://danilocm.github.io/bsale_frontend/
