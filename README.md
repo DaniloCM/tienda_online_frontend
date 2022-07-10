@@ -4,8 +4,9 @@ La prueba consiste en realizar una tienda online que despliegue los productos ag
 
 Este repositorio corresponde a la parte frondend del proyecto.
 
+El proyecto frontend tiene deploy en github-pages:
+https://danilocm.github.io/bsale_frontend/
 ## Partes del frontend ##
-
 
 El frontend tiene varias partes para ayudar a la búsqueda, filtro y experiencia del usuario.
 Las partes son:
