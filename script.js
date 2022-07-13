@@ -5,49 +5,53 @@ import { getProducts } from "./modules/products.js";
 $(async () => {
 
     const categories = await getCategories();
-    console.log(categories);
+    let products = await getProducts();
 
     $(".categorias").html(createCategoryFilter(categories));
-    createCards();// Consulta product
-    productsForCategoriesAndPriceRange(categories);// Consulta de nuevo y product
+    createCards(products);
+    productsForCategoriesAndPriceRange(categories, products);
 
 
     $(".form-buscar").on("submit", async function (event) {
         event.preventDefault();
-        createCards();// Consulta a product
-        productsForCategoriesAndPriceRange(categories);// Consulta de nuevo a product y category
+        products = await getProducts();
+        createCards(products);
+        productsForCategoriesAndPriceRange(categories, products);
     })
 
     $("#menor-1500, #entre-1500-5000, #mayor-5000").on("change", async function (){
-        createCards();
+        products = await getProducts();
+        createCards(products);
     })
 
     $("#orden").on("change", async function (){  
-        createCards();
+        products = await getProducts();
+        createCards(products);
     })
 
     $(".categorias input").on("change", async function (){  
-        createCards();
+        products = await getProducts();
+        createCards(products);
     })
 
 })
 
-const createCards = async () => {
-    const search = $("#busqueda").val();
-    const sort = $("#orden").val();
+const createCards = async (products) => {
+    // const search = $("#busqueda").val();
+    // const sort = $("#orden").val();
 
-    let products = await getProducts(search, sort);
+    // let products = await getProducts(search, sort);
 
     let cards = cardsHTML(products);
 
     $(".resultados").html(cards);
 }
 
-const productsForCategoriesAndPriceRange = async (categories) => {
-    const search = $("#busqueda").val();
-    const sort = $("#orden").val();
+const productsForCategoriesAndPriceRange = async (categories, products) => {
+    // const search = $("#busqueda").val();
+    // const sort = $("#orden").val();
 
-    let products = await getProducts(search, sort);
+    // let products = await getProducts(search, sort);
 
     categories.forEach((category) => {
         let quantityOfProducts = products

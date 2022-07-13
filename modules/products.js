@@ -1,5 +1,7 @@
 
-export const getProducts = async (search, sort) => {
+export const getProducts = async () => {
+    const search = $("#busqueda").val();
+    const sort = $("#orden").val();
     
     let url = `https://api-tiendabsale.herokuapp.com/api/v1/product/${search}?sort=${sort}`;
     
