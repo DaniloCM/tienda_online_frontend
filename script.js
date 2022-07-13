@@ -4,15 +4,18 @@ import { getProducts } from "./modules/products.js";
 
 $(async () => {
 
-    $(".categorias").html(await createCategoryFilter());
-    createCards();
-    productsForCategoriesAndPriceRange();
+    const categories = await getCategories();
+    console.log(categories);
+
+    $(".categorias").html(createCategoryFilter(categories));
+    createCards();// Consulta product
+    productsForCategoriesAndPriceRange(categories);// Consulta de nuevo y product
 
 
     $(".form-buscar").on("submit", async function (event) {
         event.preventDefault();
-        createCards();
-        productsForCategoriesAndPriceRange();
+        createCards();// Consulta a product
+        productsForCategoriesAndPriceRange(categories);// Consulta de nuevo a product y category
     })
 
     $("#menor-1500, #entre-1500-5000, #mayor-5000").on("change", async function (){
@@ -40,12 +43,11 @@ const createCards = async () => {
     $(".resultados").html(cards);
 }
 
-const productsForCategoriesAndPriceRange = async () => {
+const productsForCategoriesAndPriceRange = async (categories) => {
     const search = $("#busqueda").val();
     const sort = $("#orden").val();
 
     let products = await getProducts(search, sort);
-    let categories = await getCategories();
 
     categories.forEach((category) => {
         let quantityOfProducts = products

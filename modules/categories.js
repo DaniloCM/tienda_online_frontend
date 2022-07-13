@@ -1,6 +1,5 @@
-export const createCategoryFilter = async () => {
-
-    let categories = await getCategories();
+export const createCategoryFilter = (categories) => {
+    
     let categoriesHTML = "";
     
     categories.forEach(category => {
