@@ -24,6 +24,7 @@ body{
 .btn:hover{
     background-color: #FFF;
     color: #FF6020;
+    border-color: #FF6020;
 }
 
 .oldPrice {

@@ -12,11 +12,20 @@ $(async () => {
     productsForCategoriesAndPriceRange(categories, products);
 
 
-    $(".form-buscar").on("submit", async function (event) {
+    $(".form-buscar, #cleanFilters").on("submit", async function (event) {
         event.preventDefault();
+        cleanFilters();
+
         products = await getProducts();
         createCards(products);
         productsForCategoriesAndPriceRange(categories, products);
+    })
+
+    $("#cleanFilters").on("click", async function () {
+        cleanFilters();
+
+        products = await getProducts();
+        createCards(products);
     })
 
     $("#menor-1500, #entre-1500-5000, #mayor-5000").on("change", async function (){
@@ -91,3 +100,10 @@ const productsForCategoriesAndPriceRange = async (categories, products) => {
         (${quantityOfProductsForRangePrice[2]})
     `);
 }
+
+var cleanFilters = () => {
+
+    $(".categorias .form-check-input").prop("checked", false);
+    $(".rango-precios .form-check-input").prop("checked", false);
+
+};
