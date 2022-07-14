@@ -1,5 +1,6 @@
+// Crea el código HTML de los checkbox de los filtros por categorias
+// cardsHTML(categories: array): string
 export const createCategoryFilter = (categories) => {
-    
     let categoriesHTML = "";
     
     categories.forEach(category => {
@@ -19,11 +20,12 @@ export const createCategoryFilter = (categories) => {
     });
 
     return categoriesHTML;
-
 };
 
-export const getCategories = async () => {
 
+// Consulta las categorias a la API REST y entrega un array de objetos con información de ellos
+// getCategories(): array
+export const getCategories = async () => {
     let url = `https://api-tiendabsale.herokuapp.com/api/v1/category`;
     
     let categories = await $.ajax({
@@ -31,6 +33,5 @@ export const getCategories = async () => {
     });
 
     return categories;
-
 };
 

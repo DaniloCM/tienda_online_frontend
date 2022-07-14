@@ -1,3 +1,5 @@
+// Crea el código HTML de las cartas de los productos
+// cardsHTML(products: array): string
 export const cardsHTML = ( products ) => {
 
     let cards = products.map(( product ) => {
@@ -7,7 +9,9 @@ export const cardsHTML = ( products ) => {
         return `
             <div class="col p-2 d-flex justify-content-center">
                 <div class="card ">
-                   ${ img( url_image, name ) }
+                    <div class="img">
+                        ${ img( url_image, name ) }
+                    </div>
                     <div class="card-body">
                         <h5 class="card-title mb-3">${ name }</h5>
                         <p class="card-text">
@@ -27,6 +31,9 @@ export const cardsHTML = ( products ) => {
     return cards.join("");
 }
 
+
+// Crear la etiqueta HTML de la imagen de los productos que estan en la cartas
+// img(url: string, name: string): string
 const img = (url, name) => {
 
     if (!url) url = "./imgs/not_available.png"
@@ -37,6 +44,9 @@ const img = (url, name) => {
     return imgTag;
 }
 
+
+// Crea el contenido dentro del parrafo de los precios y descuentos del producto
+// priceAndDiscount(price: number, discount:number): string
 const priceAndDiscount = (price, discount) => {
 
     let discountString = "";

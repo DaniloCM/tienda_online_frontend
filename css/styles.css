@@ -41,6 +41,14 @@ body{
     opacity: 0.75;
 }
 
-.card{
+.card {
     width: 100%;
+}
+
+.img{
+    flex: 1 1 0;
+}
+
+.card-body{
+    flex: 0;
 }
