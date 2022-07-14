@@ -1,9 +1,9 @@
-body{
-    font-family: Poppins,sans-serif;
+body {
+    font-family: Poppins, sans-serif;
 }
 
 /* Barra de navegación */
-.navbar{
+.navbar {
     background-color: #04A6EB;
 }
 
@@ -13,19 +13,20 @@ body{
 }
 
 /* Icono menu colapsado */
-.navbar-toggler{
+.navbar-toggler {
     color: #FF6020;
     border-color: #FF6020;
     font-size: 2rem;
 }
 
 /* Botones */
-.btn, .input-group-text{
+.btn,
+.input-group-text {
     background-color: #FF6020;
     color: #FFF;
 }
 
-.btn:hover{
+.btn:hover {
     background-color: #FFF;
     color: #FF6020;
     border-color: #FF6020;
@@ -37,7 +38,8 @@ body{
     opacity: 0.5;
 }
 
-.newPrice, .discount {
+.newPrice,
+.discount {
     color: #ff4d4d;
     font-size: 1.25em;
 }
@@ -49,13 +51,25 @@ body{
 
 /* Distribución de las cartas */
 .card {
+    animation: fadein 1s;
     width: 100%;
+    -webkit-animation: fadein 1s;
 }
 
-.img{
+.img {
     flex: 1 1 0;
 }
 
-.card-body{
+.card-body {
     flex: 0;
+}
+
+@keyframes fadein {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }
