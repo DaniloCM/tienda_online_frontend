@@ -2,20 +2,24 @@ body{
     font-family: Poppins,sans-serif;
 }
 
+/* Barra de navegación */
 .navbar{
     background-color: #04A6EB;
 }
 
+/* Logo Bsale */
 #logo {
     width: 250px;
 }
 
+/* Icono menu colapsado */
 .navbar-toggler{
     color: #FF6020;
     border-color: #FF6020;
     font-size: 2rem;
 }
 
+/* Botones */
 .btn, .input-group-text{
     background-color: #FF6020;
     color: #FFF;
@@ -27,6 +31,7 @@ body{
     border-color: #FF6020;
 }
 
+/* Precios de productos en las cartas */
 .oldPrice {
     text-decoration: line-through;
     opacity: 0.5;
@@ -37,10 +42,12 @@ body{
     font-size: 1.25em;
 }
 
+/* Cantidad de productos por filtro */
 .quantity {
     opacity: 0.75;
 }
 
+/* Distribución de las cartas */
 .card {
     width: 100%;
 }
