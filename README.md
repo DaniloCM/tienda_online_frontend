@@ -17,6 +17,7 @@ Las partes son:
 * Sección de filtros
 * Sección de resultados
 * Cartas de los productos
+* Paginación
 
 Veamos cada una de las partes y sus sub-partes
 
@@ -64,6 +65,10 @@ El orden de búsqueda es un desplegable que tiene cuatro formas de ordenar los p
 
 Cada Producto encontrado con las búsquedas están representados por una carta, que se muestran debajo del orden de búsqueda. La carta muestra del producto una imagen, el nombre, precio, el precio descontado si hay descuento, descuento si es que tiene y un botón de compra.
 
+### Paginación
+
+Los productos encontrados se dividen en varias páginas, donde cada página puede tener 8 productos como máximo. Al final de la sección de resultados se encuentra la paginación donde se puede seleccionar la página que se quiere ver.
+
 ## Funciones
 
 Las funciones de la parte frontend se dividieron en un archivo principal:
@@ -74,6 +79,7 @@ Y Tres módulos de este que son:
 
 * cards.js
 * categories.js
+* pagination.js
 * products.js
 
 ### script.js
@@ -82,13 +88,21 @@ Este es el archivo javascript principal, el cual contiene todas las escuchas de 
 
 #### Listens
 
-Los eventos que se están escuchando son el submit de la barra de búsqueda, el cambio de los checkbox de las categorías como los del rango de precios y el cambio de la barra del orden de búsqueda.
+Los eventos que se están escuchando son el submit de la barra de búsqueda, el cambio de los checkbox de las categorías como los del rango de precios, el cambio de la barra del orden de búsqueda y los clicks en uno de los números de la paginación.
 
 #### Funciones
 
-`createCards(): void` Crea las cartas de los productos y los inserta en la sección resultados.
+`createCards(products: array): void` Crea las cartas de los productos y los inserta en la sección resultados.
 
-`productsForCategoriesAndPriceRange(): void` Agrega al lado del nombre del filtro el número de productos que coincide con cada uno, respecto a la búsqueda realizada.
+`productsForCategoriesAndPriceRange(categories: array, products: array): void` Agrega al lado del nombre del filtro el número de productos que coincide con cada uno, respecto a la búsqueda realizada.
+
+`cleanFilters(): void` Limpia los filtros, deseleccionando los checkbox de los filtros.
+
+`infoResults(products: array): void` Crea los detalles del resultado de la consulta a los productos, los cuales se muestran en el encabezadeza de la sección de resultados.
+
+`infoFilters(products: array): void` Crea los detalles de los productos filtrados, los cuales se muestran en el encabezadeza de la sección de resultados.
+
+
 
 ### cards.js
 
@@ -104,15 +118,23 @@ Este módulo corresponde a la creación de código HTML de las cartas. Hay tres 
 
 Este módulo corresponde a la creación del código HTML de los filtros para las categorías y la consulta de las categorías a la API. Hay dos funciones que son:
 
-`createCategoryFilter(): string` Crea el código HTML de los filtros de las categorías que están en la sección filtros. Este los realiza con la información obtenida de la API con la función getCategories().
+`createCategoryFilter(categories: array): string` Crea el código HTML de los filtros de las categorías que están en la sección filtros. Este los realiza con la información obtenida de la API con la función getCategories().
 
 `getCategories(): array` Obtiene las categorías de los productos con una consulta a la API.
+
+### pagination.js
+
+Este módulo corresponde a la creación de la paginación que se mostrara en pantalla. Hay dos funciones que son:
+
+`pagination(products: array, pageClicked=1: number, isNewQuery=true: boolean): void` // Crea la paginación en la pantalla con los productos entregados. Se entrega la página que se selecciono (pageClicked) y si es una nueva consulta de los productos (isNewQuery) se crea toda la paginación, si no, solo se cambia el número de la página seleccionada.
+
+`pageProducts = (products: array, pageClicked=1: number): array` Divide los productos de 8 en 8 y entrega los correspondiente a la página seleccionada.
 
 ### products.js
 
 Este módulo corresponde a la consulta de los productos a la API. Hay cinco funciones que son:
 
-`getProducts(search: string, sort:string): array` Obtiene los productos correspondientes a la búsqueda (search) con los filtros aplicados (getPriceRangeQuery() y getCategoryQuery()) y el orden señalado (sort).
+`getProducts(): array` Obtiene los productos correspondientes a la búsqueda con los filtros aplicados y el orden seleccionado.
 
 `getPriceRangeQuery(): string` Retorna el query de la url de la API correspondiente a el o los rangos de precios seleccionados.
 

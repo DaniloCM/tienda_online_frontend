@@ -1,4 +1,4 @@
-// Consulta los productos a la API REST y entrega un array de objetos con información de ellos
+// Consulta los productos a la API REST, entrega un array de objetos con información de ellos y tambien los guarda en la sessionStorage para ocuparlo para la paginación
 // getProducts(): array
 export const getProducts = async () => {
     const search = $("#busqueda").val();
@@ -13,6 +13,8 @@ export const getProducts = async () => {
     let products = await $.ajax({
         url
     });
+
+    sessionStorage.setItem("products", JSON.stringify(products));
 
     return products;
 

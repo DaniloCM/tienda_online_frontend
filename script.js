@@ -1,6 +1,7 @@
 import { cardsHTML } from "./modules/cards.js";
 import { getCategories, createCategoryFilter } from "./modules/categories.js";
 import { getProducts } from "./modules/products.js";
+import { pagination, pageProducts } from "./modules/pagination.js";
 
 //Función Ready
 $(async () => {
@@ -10,54 +11,80 @@ $(async () => {
     let products = await getProducts();
 
     // Se crea los filtros de las categorias, las cartas de todos los productos y los números de productos por filtros al cargar la página.
+    pagination(products);
     $(".categorias").html(createCategoryFilter(categories));
-    infoResults(products);
-    createCards(products);
     productsForCategoriesAndPriceRange(categories, products);
+    infoResults(products);
+    products = pageProducts(products);
+    createCards(products);
     
     
     // LISTENERS
     
-    //// Escucha el evento submit del formulario de búsqueda. Limpia los filtros, realizando una consulta de los productos a la API y muestra los productos en pantalla.
+    //// Escucha el evento submit del formulario de búsqueda. Limpia los filtros, realizando una consulta de los productos a la API, crea la paginación comenzando en la primera página y muestra los productos en pantalla.
     $(".form-buscar").on("submit", async function (event) {
         event.preventDefault();
         cleanFilters();
         
         products = await getProducts();
         infoResults(products);
-        createCards(products);
         productsForCategoriesAndPriceRange(categories, products);
+        pagination(products);
+        products = pageProducts(products);
+        createCards(products);
     })
 
-    //// Escucha el evento click del botón limpiar filtros. Limpia los filtros, realizando una consulta de los productos a la API y muestra los productos en pantalla.
+    //// Escucha el evento click del botón limpiar filtros. Limpia los filtros, realizando una consulta de los productos a la API, crea la paginación comenzando en la primera página y muestra los productos en pantalla.
     $("#cleanFilters").on("click", async function () {
         cleanFilters();
 
         products = await getProducts();
         infoResults(products);
+        pagination(products);
+        products = pageProducts(products);
         createCards(products);
     })
 
-    //// Escucha si hay cambios en los filtros de rango de precios. Realiza una consulta de los productos a la API con los filtros seleccionados y muestra los productos en pantalla.
+    //// Escucha si hay cambios en los filtros de rango de precios. Realiza una consulta de los productos a la API con los filtros seleccionados, crea la paginación comenzando en la primera página y muestra los productos en pantalla.
     $("#menor-1500, #entre-1500-5000, #mayor-5000").on("change", async function (){
         products = await getProducts();
         infoFilters(products);
+        pagination(products);
+        products = pageProducts(products);
         createCards(products);
     })
 
-    //// Escucha si hay cambios en el selector de ordenar por. Realiza una consulta de los productos a la API con el orden seleccionado y muestra los productos en pantalla.
+    //// Escucha si hay cambios en el selector de ordenar por. Realiza una consulta de los productos a la API con el orden seleccionado, crea la paginación comenzando en la primera página y muestra los productos en pantalla.
     $("#orden").on("change", async function (){  
         products = await getProducts();
         infoFilters(products);
+        pagination(products);
+        products = pageProducts(products);
         createCards(products);
     })
 
-    //// Escucha si hay cambios en los filtros de categorias. Realiza una consulta de los productos a la API con los filtros seleccionados y muestra los productos en pantalla.
+    //// Escucha si hay cambios en los filtros de categorias. Realiza una consulta de los productos a la API con los filtros seleccionados, crea la paginación comenzando en la primera página y muestra los productos en pantalla.
     $(".categorias input").on("change", async function (){  
         products = await getProducts();
         infoFilters(products);
+        pagination(products);
+        products = pageProducts(products);
         createCards(products);
     })
+
+    //// Escucha si se hace click en uno de los botones de la paginación. Se selecciona la pagína y se muestran los productos que estan en ella.
+    $(document).on("click", ".pagination button", async function(){
+        // Consulta los productos en la sessionStorage
+        products = JSON.parse(sessionStorage.getItem("products"));
+        
+        // Se consulta que número de página se selecciono
+        let pageClicked = Number($(this).html());
+        
+        // Activa la página que se selecciono, se limitan los productos que son de la página y se muestran los productos en la pantalla
+        pagination(products, pageClicked, false);
+        products = pageProducts(products, pageClicked);
+        createCards(products);
+    });
 
 })
 
@@ -124,6 +151,8 @@ const cleanFilters = () => {
 };
 
 
+//// Crea los detalles del resultado de la consulta a los productos, los cuales se muestran en el encabezadeza de la sección de resultados
+//// infoResults(products: array): void
 const infoResults = (products) => {
 
     const search = $("#busqueda").val();
@@ -138,6 +167,9 @@ const infoResults = (products) => {
 
 };
 
+
+//// Crea los detalles de los productos filtrados, los cuales se muestran en el encabezadeza de la sección de resultados
+//// infoFilters(products: array): void
 const infoFilters = (products) => {
 
     const quantityOfResults = products.length;
