@@ -44,6 +44,12 @@ body {
     font-size: 1.25em;
 }
 
+/* Checkbox chequeados */
+.form-check-input:checked{
+    background-color: #FF6020;
+    border-color: #FF6020;
+}
+
 /* Cantidad de productos por filtro */
 .quantity {
     opacity: 0.75;
@@ -64,6 +70,17 @@ body {
     flex: 0;
 }
 
+/* Paginación */
+.page-item.active .page-link{
+    background-color: #FF6020;
+    border-color: #FF6020;
+}
+
+.page-link, .page-link:hover {
+    color: #FF6020;
+}
+
+/* Animación para la aparción de las cartas */
 @keyframes fadein {
     0% {
         opacity: 0;
