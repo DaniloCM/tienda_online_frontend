@@ -7,7 +7,7 @@ El proyecto consiste en realizar una tienda online que despliegue los productos 
 Este repositorio corresponde a la parte frontend del proyecto.
 
 El proyecto frontend tiene deploy en github-pages:
-https://danilocm.github.io/bsale_frontend/
+https://danilocm.github.io/tienda_online_frontend/
 ## Partes del frontend ##
 
 El frontend tiene varias partes para ayudar a la búsqueda, filtro y experiencia del usuario.
