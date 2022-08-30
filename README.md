@@ -1,6 +1,8 @@
-# Prueba técnica: Desafío Bsale Producto
+<!-- # Prueba técnica: Desafío Bsale Producto -->
+# Tienda Online
 
-La prueba consiste en realizar una tienda online que despliegue los productos agrupados por categorías que pertenecen.
+<!-- La prueba consiste en realizar una tienda online que despliegue los productos agrupados por categorías que pertenecen. -->
+El proyecto consiste en realizar una tienda online que despliegue los productos agrupados por categorías que pertenecen.
 
 Este repositorio corresponde a la parte frontend del proyecto.
 
@@ -11,7 +13,7 @@ https://danilocm.github.io/bsale_frontend/
 El frontend tiene varias partes para ayudar a la búsqueda, filtro y experiencia del usuario.
 Las partes son:
 
-* Logo Bsale
+* Logo
 * Barra de búsqueda
 * Barra de despliegue
 * Sección de filtros
@@ -21,7 +23,7 @@ Las partes son:
 
 Veamos cada una de las partes y sus sub-partes
 
-### Logo Bsale ###
+### Logo ###
 
 El logo permite, además de mostrar el logo de la empresa, volver a recargar la página, volviendo a mostrar todos los productos sin filtros, ni búsqueda y con el orden predeterminado que es alfabético de la A a la Z.
 
