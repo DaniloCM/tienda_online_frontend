@@ -8,8 +8,17 @@ body {
 }
 
 /* Logo Bsale */
-#logo {
+/* #logo {
     width: 250px;
+} */
+.navbar-brand{
+    font-size: 2rem;
+    font-weight: 500;
+    color: #FFF;
+}
+
+.navbar-brand:hover{
+    color: #FF6020;
 }
 
 /* Icono menu colapsado */
